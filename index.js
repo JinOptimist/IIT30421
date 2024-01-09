@@ -1,83 +1,51 @@
-//var let const
+$(document).ready(function () {
+    init();
 
-let name = 'Ivan';
-let age = 10 + 5;
-let percent = .5;
-let isAdult = age >= 18;
+    $('.girl').click(function () {
+        $('.girl').removeClass('red');
+        $(this).addClass('red');
+    });
 
-let conidtion1 = true;
-let conidtion2 = false;
-let conidtion3 = !conidtion1;//false
-let conidtion4 = conidtion2 && conidtion3;//false
-let conidtion5 = conidtion3 || conidtion4;//false
-let conidtion6 = age > 18 || name == 'Ivan' && conidtion2 == conidtion3;
+    $('.remove').click(function () {
+        $(this).parent().hide(2 * 1000);
+    });
 
-age = age + 1;
-age++;
+    $('.show-all').click(function () {
+        $('.girl').show(5 * 1000);
+    });
 
-for (let i = 0; i < 5; i++) {
-    let number = i + 1;
-    console.log(number + '. hi' + name);
-}
+    $('.boxes').click(function () {
+        let isRedActive = $('.boxes .active').hasClass('red');
 
-// AAA
-// if (BBB) true
-// DDD
-// CCC
-// if (BBB) true
-// DDD
-// CCC
-// if (BBB) false
+        $('.box').toggleClass('active');
 
-while (age < 80) {
-    console.log(name + ' ' + age);
-    age = age + 10;
-}
+        if (isRedActive) {
+            $('.box.red').animate(
+                {
+                    height: 0
+                },
+                2 * 1000);
+            $('.box.green').animate(
+                {
+                    height: 100
+                },
+                2 * 1000);
+        } else {
+            $('.box.red').animate(
+                {
+                    height: 100
+                },
+                2 * 1000);
+            $('.box.green').animate(
+                {
+                    height: 0
+                },
+                2 * 1000);
+        }
 
-let user1 = {
-    name: 'Ivan',
-    age: 20
-};
-let user2 = {
-    name: 'Olga',
-    age: 16
-};
+    });
 
-sayHiToUser(user1);
-sayHiToUser(user2);
-
-
-//             0  1  2  3  4  5
-let numbers = [1, 5, 2, 1, 7, 1];
-
-let users = [];
-for (let i = 0; i < 7; i++) {
-    let user = generateUser();
-    users.push(user);
-}
-
-
-
-function generateUser() {
-    let userAge = randomInteger(10, 50);
-    let user = {
-        name: 'Smith',
-        age: userAge
+    function init() {
+        $('.box.green').css('height', 0);
     }
-    return user;
-}
-
-function sayHiToUser(someUser) {
-    let helloWord;
-    if (someUser.age > 18) {
-        helloWord = 'Hello';
-    } else {
-        helloWord = 'Hi';
-    }
-    console.log(helloWord + ' ' + someUser.name);
-}
-
-function randomInteger(min, max) {
-    let rand = min + Math.random() * (max + 1 - min);
-    return Math.floor(rand);
-}
+});

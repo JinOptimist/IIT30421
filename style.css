@@ -1,4 +1,48 @@
-.girl {
+.girls{
+    display: flex;
+}
+
+.girl{
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+}
+
+.girl .icon.remove{
+    position: absolute;
+}
+
+.girl img {
     max-width: 100px;
     max-height: 100px;
+}
+
+.girl.red{
+    border: 1px red solid;
+}
+
+.icon{
+    border: 3px green dotted;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.icon:hover{
+    border-color: blue;
+   
+}
+.boxes{
+    margin: 10px;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+}
+.boxes .green{
+    background-color: green;
+}
+
+.boxes .red{
+    background-color: red;
 }
