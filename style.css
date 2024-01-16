@@ -46,3 +46,34 @@
 .boxes .red{
     background-color: red;
 }
+
+.outdated{
+    display: none;
+}
+
+.card{
+    border: 1px red solid;
+    width: 150px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+.card img{
+    max-width: 150px;
+    max-height: 200px;
+}
+
+.card img{
+    display: none;
+}
+.card img.active{
+    display: block;
+}
+.card-rotate{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.template{
+    display: none;
+}

@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    const arrayOfGirlUrls = ['Card1.jpg', 'Card2.jpg', 'Card3.jpg'];
+    
     init();
 
     $('.girl').click(function () {
@@ -45,7 +47,67 @@ $(document).ready(function () {
 
     });
 
+    $('.card').click(function () {
+        let cardBlock = $(this);
+        rotateImage(
+            cardBlock,
+            90,
+            () => {
+                cardBlock.find('img').toggleClass('active');
+                rotateImage(
+                    cardBlock, 
+                    0);
+            });
+    })
+
+    function rotateImage(blockToRotate, finalAngle, completeFunction) {
+        blockToRotate.animate(
+            {
+                smile: finalAngle
+            },
+            {
+                duration: 1 * 1000,
+                step: function (smile) {
+                    console.log(smile);
+                    blockToRotate.css('transform', 'rotateY(' + smile + 'deg)');
+                },
+                complete: function () {
+                    if (completeFunction) {
+                        completeFunction();
+                    }
+                }
+            });
+    }
+
     function init() {
         $('.box.green').css('height', 0);
+        for (let i = 0; i < arrayOfGirlUrls.length; i++) {
+            const imageUrl = arrayOfGirlUrls[i];
+            generateCardBlock(imageUrl);
+        }
+    }
+
+    function generateCardBlock(imageUrl){
+       let blockCard = $('.card.template').clone();
+       blockCard.removeClass('template');
+       blockCard.find('.face').attr('src',  'images/' + imageUrl);
+       $('.card-rotate').append(blockCard);
+    }
+
+    function generateCardBlockHARD(imageUrl){
+        let cardDiv = $('<div>');
+        cardDiv.addClass('card');
+        
+        let imgFace = $('<img>');
+        imgFace.addClass('face');
+        imgFace.attr('src', 'image/' + imageUrl);
+
+        let imgCover = $('<img>');
+        imgFace.addClass('cover');
+        imgFace.addClass('active');
+        imgFace.attr('src', 'images/card_cover.png');
+
+        cardDiv.append(imgFace);
+        cardDiv.append(imgCover);
     }
 });
