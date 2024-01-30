@@ -1,6 +1,6 @@
 $(document).ready(function () {
     const arrayOfGirlUrls = ['Card1.jpg', 'Card2.jpg', 'Card3.jpg'];
-    
+
     init();
 
     $('.girl').click(function () {
@@ -55,10 +55,27 @@ $(document).ready(function () {
             () => {
                 cardBlock.find('img').toggleClass('active');
                 rotateImage(
-                    cardBlock, 
+                    cardBlock,
                     0);
             });
-    })
+    });
+
+    $('.boxes-css .box').click(function () {
+        $(this).parent().find('.box').toggleClass('active');
+    });
+
+    $('.menu').click(function(){
+        $(this).toggleClass('open');
+    });
+
+    $('.images-for-hide-css .girl').click(function(){
+        $(this).toggleClass('remove');
+    });
+
+    // $('.images-for-hide-css .show-all').click(function(){
+    //     $('.images-for-hide-css .girl').removeClass('remove');
+    // });
+
 
     function rotateImage(blockToRotate, finalAngle, completeFunction) {
         blockToRotate.animate(
@@ -87,17 +104,17 @@ $(document).ready(function () {
         }
     }
 
-    function generateCardBlock(imageUrl){
-       let blockCard = $('.card.template').clone();
-       blockCard.removeClass('template');
-       blockCard.find('.face').attr('src',  'images/' + imageUrl);
-       $('.card-rotate').append(blockCard);
+    function generateCardBlock(imageUrl) {
+        let blockCard = $('.card.template').clone();
+        blockCard.removeClass('template');
+        blockCard.find('.face').attr('src', 'images/' + imageUrl);
+        $('.card-rotate').append(blockCard);
     }
 
-    function generateCardBlockHARD(imageUrl){
+    function generateCardBlockHARD(imageUrl) {
         let cardDiv = $('<div>');
         cardDiv.addClass('card');
-        
+
         let imgFace = $('<img>');
         imgFace.addClass('face');
         imgFace.attr('src', 'image/' + imageUrl);

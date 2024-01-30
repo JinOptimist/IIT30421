@@ -62,8 +62,8 @@ console.log('********** GENERATION COMPLETE *******************');
 for (let i = 0; i < users.length; i++) {
     let user = users[i];
     console.log(i);
-    //writeUserToConsole(user);
-    addDivWithUserInfoToBody(user);
+    writeUserToConsole(user);
+    //addDivWithUserInfoToBody(user);
 }
 
 function generateUser() {
