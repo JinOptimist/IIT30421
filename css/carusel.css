@@ -22,3 +22,10 @@
     width: 0;
     border-color: blue;
 }
+
+.prev{
+    background-color: brown;
+}
+.center{
+    background-color: green;
+}
