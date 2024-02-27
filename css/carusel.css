@@ -18,9 +18,15 @@
     max-height: 100%;
 }
 
-.image-container.after-next{
+.image-container.after-next,
+.image-container.before-prev
+{
     width: 0;
     border-color: blue;
+}
+
+.image-container.before-prev{
+    border-color: yellow;
 }
 
 .prev{
